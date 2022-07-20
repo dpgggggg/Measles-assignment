@@ -60,17 +60,16 @@ void draw()
   strokeCap(SQUARE); //ROUND (default), PROJECT
   strokeWeight(thack);
   line(xLeftMouth,yLeftMouth,xRightMouth,yRightMouth); 
-  strokeWeight(1);//Reset default
-  float x;
-  float y;
-  x=xCenter-faceRadius;
-  y=yCenter-faceRadius;
-  //xMeasle = random((x-xCenter)*(x-xCenter)+(y-yCenter)*(y-yCenter));
+  strokeWeight(1);//Reset default 
   //yMeasle = random(smallerDimension);
   xMeasle = random(xCenter-faceRadius, xCenter+faceRadius);
+  //xMeasle = random();
   yMeasle = random(smallerDimension); //if zero is first, then default
-  //rect(xCenter-faceRadius,0, 2*faceRadius, smallerDimension);
+  if (dist(xCenter, yCenter, xMeasle, yMeasle)>faceRadius){fill(backgroundColor);}
+  else{
   fill(red);
+   }
+  //rect(xCenter-faceRadius,0, 2*faceRadius, smallerDimension);
   noStroke();
   measlesDiameter = random(smallerDimension*1/40);
   ellipse(xMeasle, yMeasle, measlesDiameter, measlesDiameter);
