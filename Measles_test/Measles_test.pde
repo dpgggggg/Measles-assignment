@@ -12,7 +12,7 @@ Boolean nightMode=false;
 void setup() 
 {
   //CANVAS will will be added to later
-  size(800,600); //Landscape
+  size(1000,800); //Landscape
   //
   structure();
   measlePopulationSetup();
@@ -24,8 +24,8 @@ void setup()
 void draw() 
 {
   measlesDraw();
-  //rect(startButtonX,startButtonY,startButtonWidth,startButtonHeight);
-  
+  rect(startButtonX,startButtonY,startButtonWidth,startButtonHeight);
+  rect(quitButtonX, quitButtonY, quitButtonWidth, quitButtonHeight);
 }//End draw
 //
 void keyPressed() {
