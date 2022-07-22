@@ -1,8 +1,12 @@
 float xFace, yFace, widthDiameterFace, heightDiameterFace, faceRadius, smallerDimension;
 float xLefteye, yLefteye, LefteyeDiameter;
+float xLeftPupil, yLeftPupil, LeftPupilDiameter;
 float xRighteye, yRighteye, RighteyeDiameter;
+float xRightPupil, yRightPupil, RightPupilDiameter;
 float xNoseBridge,yNoseBridge, xLeftNostril,yLeftNostril, xRightNostril,yRightNostril;
 float xLeftMouth,yLeftMouth,xRightMouth,yRightMouth;
+Boolean measlesDrawing =false;
+color black=#000000;
   //
  void measlePopulationSetup(){
   //Population
@@ -17,9 +21,15 @@ float xLeftMouth,yLeftMouth,xRightMouth,yRightMouth;
   xLefteye = xCenter-smallerDimension/6;
   yLefteye = yCenter-smallerDimension/6;
   LefteyeDiameter = smallerDimension/6;
+  xLeftPupil = xLefteye;
+  yLeftPupil = yLefteye;
+  LeftPupilDiameter = LefteyeDiameter/2;
   xRighteye = xCenter+smallerDimension/6;
   yRighteye = yCenter-smallerDimension/6;
   RighteyeDiameter = smallerDimension/6;
+  xRightPupil = xRighteye;
+  yRightPupil =  yRighteye;
+  RightPupilDiameter = RighteyeDiameter/2;
   xLeftMouth = xLefteye;
   yLeftMouth = yCenter+smallerDimension/6;
   xRightMouth = xRighteye;
@@ -42,16 +52,28 @@ float xLeftMouth,yLeftMouth,xRightMouth,yRightMouth;
 void measlesDraw()
 {
   ellipse(xLefteye, yLefteye, LefteyeDiameter, LefteyeDiameter); 
-  ellipse(xRighteye, yRighteye, RighteyeDiameter, RighteyeDiameter); 
+  ellipse(xRighteye, yRighteye, RighteyeDiameter, RighteyeDiameter);
+  fill(black);
+  stroke(1);
+  ellipse(xLeftPupil, yLeftPupil, LeftPupilDiameter, LeftPupilDiameter);
+  fill(black);
+  stroke(1);
+  ellipse(xRightPupil, yRightPupil, RightPupilDiameter, RightPupilDiameter);
   triangle(xNoseBridge, yNoseBridge, xLeftNostril,yLeftNostril, xRightNostril,yRightNostril ); 
   strokeCap(SQUARE); //ROUND (default), PROJECT
   strokeWeight(thack);
   line(xLeftMouth,yLeftMouth,xRightMouth,yRightMouth); 
   strokeWeight(1);//Reset default 
-  //yMeasle = random(smallerDimension);
-  xMeasle = random(xCenter-faceRadius, xCenter+faceRadius);
-  //xMeasle = random();
-  yMeasle = random(smallerDimension); //if zero is first, then default
+ if (measlesDrawing==true) 
+ {
+ xMeasle = random(xCenter-faceRadius, xCenter+faceRadius);
+ yMeasle = random(smallerDimension); //if zero is first, then default
+ 
+  
+ }
+  
+  
+ 
   if (dist(xCenter, yCenter, xMeasle, yMeasle)>faceRadius){fill(backgroundColor);}
   else{
   fill(red);
