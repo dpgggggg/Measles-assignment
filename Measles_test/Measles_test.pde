@@ -23,6 +23,15 @@ void setup()
   ls();
   Image();
   Image1();
+  if (nightMode==true) {
+     backgroundColor = color( random(255), random(255), 0 ) ; 
+    background( backgroundColor );
+   ellipse(xFace, yFace, widthDiameterFace, heightDiameterFace);
+  } else {
+   backgroundColor = color( random(255), random(255), 0 );
+    background( backgroundColor );
+    ellipse(xFace, yFace, widthDiameterFace, heightDiameterFace);
+  }
   //structure();
   
   
@@ -30,11 +39,14 @@ void setup()
 //
 void draw() 
 {
-  buttons();
+   buttons1();
   measlesDraw();
   if (measlesDrawing == true) {imageDraw();}
   else {
     imageDraw2();
+     
+    
+   
   }
  
 }//End draw
@@ -46,17 +58,22 @@ void keyPressed() {
 void mousePressed() {
   //Technically, there are 4 ways to code a mouse button press
   //
-  if ( mouseButton == LEFT ) {
+  //if ( mouseButton == LEFT ) { if (nightMode==false) {
+  //nightMode=true;backgroundColor = color( random(255), random(255), 0 ) ; 
+    //background( backgroundColor );
+    //ellipse(xFace, yFace, widthDiameterFace, heightDiameterFace);} else {nightMode=false;backgroundColor = color( random(255), random(255), 0 );
+    //background( backgroundColor );
+    //ellipse(xFace, yFace, widthDiameterFace, heightDiameterFace);}
     //Night Mode TRUE
- backgroundColor = color( random(255), random(255), random(255) ) ; 
-    background( backgroundColor );
-    ellipse(xFace, yFace, widthDiameterFace, heightDiameterFace);
-  }//End Left Mouse Button
-  if( mouseButton == RIGHT ) {
-  backgroundColor = color( random(255), random(255), 0 );
-    background( backgroundColor );
-    ellipse(xFace, yFace, widthDiameterFace, heightDiameterFace);
-  }//End Right Mouse BUtton
+// backgroundColor = color( random(255), random(255), random(255) ) ; 
+    //background( backgroundColor );
+    //ellipse(xFace, yFace, widthDiameterFace, heightDiameterFace);
+  //End Left Mouse Button
+  //if( mouseButton == RIGHT ) {
+  //backgroundColor = color( random(255), random(255), 0 );
+    //background( backgroundColor );
+    //ellipse(xFace, yFace, widthDiameterFace, heightDiameterFace);
+  //}//End Right Mouse BUtton
   //if ( mouseButton == WHEEL ) {}//End Mouse WHEEL
   // For any button
   //if ( nightMode== false ) { //Nightmode Switch
@@ -64,6 +81,7 @@ void mousePressed() {
  //} else {
    //nightMode = false;
   //} //End nightMode Switch
+  //Buttons
   if ( mouseX>=startButtonX && mouseX<=startButtonX+startButtonWidth && mouseY>=startButtonY && mouseY<=startButtonY+startButtonHeight) 
   { if(measlesDrawing==false) {
   measlesDrawing=true; 
@@ -71,10 +89,21 @@ void mousePressed() {
     measlesDrawing=false;
     noStroke();
     ellipse(xFace, yFace, widthDiameterFace, heightDiameterFace);
+    
 }
-    ellipse(xFace, yFace, widthDiameterFace, heightDiameterFace);}
+    nightMode=true;    
+  ellipse(xFace, yFace, widthDiameterFace, heightDiameterFace);
+ nightMode=false;}
     
     if ( mouseX>=quitButtonX && mouseX<=quitButtonX+quitButtonWidth && mouseY>=quitButtonY && mouseY<=quitButtonY+quitButtonHeight) exit();
+    if ( mouseX>=nightModeX && mouseX<=nightModeX+nightModeWidth && mouseY>=nightModeY && mouseY<=nightModeY+nightModeHeight)  
+    { if (nightMode==false) {
+  nightMode=true;backgroundColor = color( random(255), random(255), 0 ) ; 
+    background( backgroundColor );
+    ellipse(xFace, yFace, widthDiameterFace, heightDiameterFace);
+  } else {nightMode=false;backgroundColor = color( random(255), random(255), 0 );
+    background( backgroundColor );
+    ellipse(xFace, yFace, widthDiameterFace, heightDiameterFace);}}
   
   
   //

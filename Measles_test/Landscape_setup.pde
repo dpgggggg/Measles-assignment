@@ -5,6 +5,8 @@ void ls() {
     appHeight = displayHeight;
     println("CANVAS needed to be readjusted to fit on your monitor.");
   } else {
+    appWidth = width;
+    appHeight =height;
     println("CANVAS is Good to go on your display.");
   }//End CANVAS in Display Checker
   //Display Orientation
